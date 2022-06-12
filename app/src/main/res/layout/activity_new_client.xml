@@ -34,7 +34,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textStyle="bold" />
 
-            <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/new_client_activity_til_userName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -45,7 +45,8 @@
                     android:layout_height="wrap_content"
                     android:hint="Nombre de usuario"
                     android:textColorHint="#616161" />
-            </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
+
 
             <TextView
                 android:id="@+id/new_client_activity_tv_ej_userName"
@@ -55,6 +56,8 @@
                 android:paddingLeft="4pt"
                 android:text="Ej: Juanito_77"
                 android:textStyle="bold|italic" />
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/new_client_activity_til_email"
@@ -69,13 +72,46 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+
             <TextView
                 android:id="@+id/register_activity_tv_ej_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8pt"
                 android:paddingLeft="4pt"
                 android:text="Ej: juanito_perez@email.com"
                 android:textStyle="bold|italic" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/new_client_activity_til_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:textColorHint="#616161" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/register_activity_tv_plan_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8pt"
+                android:layout_marginBottom="4pt"
+                android:text="Tipo de Plan"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/new_client_activity_spn_plan"
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
+            </Spinner>
 
             <Button
                 android:id="@+id/new_client_activity_btn_register"
