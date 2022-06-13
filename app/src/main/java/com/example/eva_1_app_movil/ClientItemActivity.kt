@@ -16,8 +16,10 @@ class ClientItemActivity : AppCompatActivity() {
         val tvTitle = findViewById<TextView>(R.id.client_item_activity_tv_title)
         val btnUpdate = findViewById<Button>(R.id.client_item_activity_btn_update)
         val btnDelete = findViewById<Button>(R.id.client_item_activity_btn_delete)
+        val tvInfo = findViewById<TextView>(R.id.client_item_activity_tv_info)
 
         tvTitle.text = "ID ${client.id} - ${client.title}"
+        tvInfo.text = "${client.description}"
 
         btnUpdate.setOnClickListener {
             Toast.makeText(this, "Update disponible Proximamente", Toast.LENGTH_SHORT).show()

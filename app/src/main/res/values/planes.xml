@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string-array name="planes_array">
+        <item> Plan Mensual </item>
+        <item> Plan Trimestral </item>
+        <item> Plan Semestral </item>
+        <item> Plan Anual </item>
+    </string-array>
+</resources>

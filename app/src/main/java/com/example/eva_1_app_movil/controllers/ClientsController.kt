@@ -8,7 +8,7 @@ class ClientsController constructor(ctx: Context){
 
     fun getAll (): List<Client> {
         val clients = ArrayList<Client>()
-        val clientsName = arrayOf<String>(
+        var clientsName = arrayOf<String>(
             "Alejandro", "Frank", "Boris", "Roberto", "Matias", "Franco", "Alondra", "Daniela", "Jose", "Pedro", "Maria"
         )
         for (i in clientsName.indices) {
