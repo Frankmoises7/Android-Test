@@ -20,7 +20,7 @@ class AuthController constructor(ctx: Context){
     }
 
     fun registerUser(userName: String, email: String, Password: String, plan: String){
-        Toast.makeText(this.ctx, "Usuario ${userName} Registrado", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this.ctx, "Usuario ${userName}, registrado en el ${plan}", Toast.LENGTH_SHORT).show()
         val intent = Intent(this.ctx, ClientsActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         this.ctx.startActivity(intent)
