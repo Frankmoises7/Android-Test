@@ -25,20 +25,21 @@ class NewClient : AppCompatActivity() {
         val spnPlanType = findViewById<Spinner>(R.id.new_client_activity_spn_planType)
         val tilPlanStart = findViewById<TextInputLayout>(R.id.new_client_activity_til_planStart)
 
-
-
+        //seteo de adapter para la creacion del Spinner - Esto permite usar los recursos que estan en Values
         val adapter = ArrayAdapter.createFromResource(
             this,
             R.array.planes_array,
             android.R.layout.simple_spinner_dropdown_item
         )
 
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spnPlanType.adapter = adapter
+
+
+        //Uso del TIL para DatePicker
         tilPlanStart.editText?.setOnClickListener { _ ->
             showDatePickerDialog(this, tilPlanStart, Date())
         }
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spnPlanType.adapter = adapter
 
 
         btnRegister.setOnClickListener {
