@@ -8,7 +8,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2025" />
         <entry key="app/src/main/res/layout/activity_client_item.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_clients.xml" value="0.37604166666666666" />
-        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/activity_new_client.xml" value="0.24866310160427807" />
@@ -26,5 +26,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.37604166666666666" />
+      </ProjectState>
+    </option>
   </component>
 </project>

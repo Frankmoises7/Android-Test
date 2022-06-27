@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.eva_1_app_movil.R
-import com.example.eva_1_app_movil.models.Client
+import com.example.eva_1_app_movil.models.Client2
 
-class ClientsAdapter(ctx: Context, clients: List<Client>): BaseAdapter() {
+class ClientsAdapter(ctx: Context, clients: List<Client2>): BaseAdapter() {
     val ctx = ctx
     val clients = clients
 
@@ -17,7 +17,7 @@ class ClientsAdapter(ctx: Context, clients: List<Client>): BaseAdapter() {
         return clients.size
     }
 
-    override fun getItem(position: Int): Client {
+    override fun getItem(position: Int): Client2 {
         return clients[position]
     }
 
@@ -32,7 +32,7 @@ class ClientsAdapter(ctx: Context, clients: List<Client>): BaseAdapter() {
         val client = clients[position]
         val tvClient = rowView.findViewById<TextView>(R.id.item_client_tv_title)
 
-        tvClient.text = "${client.id} - ${client.title}"
+        tvClient.text = "${client.id} - ${client.userName}"
 
         return rowView
     }

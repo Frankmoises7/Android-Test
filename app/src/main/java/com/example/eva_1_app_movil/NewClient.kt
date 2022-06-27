@@ -1,16 +1,16 @@
 package com.example.eva_1_app_movil
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
-import android.widget.Toast
 import com.example.eva_1_app_movil.controllers.AuthController
+import com.example.eva_1_app_movil.models.Client2
 import com.example.eva_1_app_movil.utils.TilValidator
 import com.example.eva_1_app_movil.utils.showDatePickerDialog
 import com.google.android.material.textfield.TextInputLayout
+import java.text.SimpleDateFormat
 import java.util.*
 
 class NewClient : AppCompatActivity() {
@@ -73,8 +73,16 @@ class NewClient : AppCompatActivity() {
             //Toast.makeText(this, plan, Toast.LENGTH_SHORT).show()
 
             if (emailValid && userNameValid && passwordValid && planStartValid){
-                AuthController(this).registerUser(userName, email, password, planType, planStart)
-                this.finish()
+                val client = Client2(
+                    id = null,
+                    userName = userName,
+                    email = email,
+                    password = password,
+                    planType = planType,
+                    planStart = SimpleDateFormat("yyyy-MM-dd").parse(planStart)
+                )
+
+                AuthController(this).registerClient(client)
             }
         }
     }

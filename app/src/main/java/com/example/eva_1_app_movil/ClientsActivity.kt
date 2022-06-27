@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ListView
-import android.widget.Toast
 import com.example.eva_1_app_movil.controllers.ClientsController
 import com.example.eva_1_app_movil.ui.ClientsAdapter
 
@@ -19,15 +18,17 @@ class ClientsActivity : AppCompatActivity() {
         val adapter = ClientsAdapter(this, allClients)
         val btnNewClient = findViewById<Button>(R.id.clients_activity_btn_NewClient)
 
-        lvClient.adapter = adapter
-        lvClient.setOnItemClickListener { adapterView, view, position, id ->
-            run{
-                val client = allClients[position]
-                val intent = Intent(view.context, ClientItemActivity::class.java)
-                intent.putExtra("client", client)
-                view.context.startActivity(intent)
+
+            lvClient.adapter = adapter
+            lvClient.setOnItemClickListener { adapterView, view, position, id ->
+                run{
+                    val client = allClients[position]
+                    val intent = Intent(view.context, ClientItemActivity::class.java)
+                    intent.putExtra("client", client)
+                    view.context.startActivity(intent)
+                }
             }
-        }
+
 
         btnNewClient.setOnClickListener {
             val intent = Intent(this, NewClient::class.java)

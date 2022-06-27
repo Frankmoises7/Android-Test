@@ -28,20 +28,9 @@
                 android:id="@+id/dashboard_activity_tv_welcome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8pt"
                 android:text="Bienvenido"
                 android:textAlignment="center"
-                android:textColor="@color/gray_primary"
-                android:textSize="48sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/dashboard_activity_tv_nameUser"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8pt"
-                android:text="'Frank_7'"
-                android:textAlignment="center"
-                android:textAllCaps="false"
                 android:textColor="@color/gray_primary"
                 android:textSize="48sp"
                 android:textStyle="bold" />
@@ -51,6 +40,7 @@
                 android:layout_width="216dp"
                 android:layout_height="216dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="16pt"
                 android:layout_marginBottom="16pt"
                 app:srcCompat="@drawable/logo" />
 
