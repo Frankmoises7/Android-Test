@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.room.Room
 import com.example.eva_1_app_movil.ClientsActivity
 import com.example.eva_1_app_movil.DashboardActivity
+import com.example.eva_1_app_movil.dao.UserClientDAO
+import com.example.eva_1_app_movil.lib.AppDatabase
 import com.example.eva_1_app_movil.models.UserClient
 import com.example.eva_1_app_movil.models.UserClientEntity
 
@@ -34,10 +36,15 @@ class AuthController constructor(ctx: Context){
 
         val db = Room.databaseBuilder(
             ctx.applicationContext,
-            AppDataBase::class.java, "database-name"
+            AppDatabase::class.java, "database-name"
         )
+            .allowMainThreadQueries()
+            .build()
 
-        Toast.makeText(this.ctx, "Usuario ${userName} Registrado", Toast.LENGTH_SHORT).show()
+        val dao = db.userClientDao()
+        dao.insert(userClientEntity)
+
+        Toast.makeText(this.ctx, "Usuario ${user.userName} Registrado", Toast.LENGTH_SHORT).show()
         val intent = Intent(this.ctx, ClientsActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         this.ctx.startActivity(intent)
