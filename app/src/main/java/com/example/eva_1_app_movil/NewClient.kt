@@ -8,9 +8,11 @@ import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.eva_1_app_movil.controllers.AuthController
+import com.example.eva_1_app_movil.models.UserClient
 import com.example.eva_1_app_movil.utils.TilValidator
 import com.example.eva_1_app_movil.utils.showDatePickerDialog
 import com.google.android.material.textfield.TextInputLayout
+import java.text.SimpleDateFormat
 import java.util.*
 
 class NewClient : AppCompatActivity() {
@@ -41,7 +43,6 @@ class NewClient : AppCompatActivity() {
             showDatePickerDialog(this, tilPlanStart, Date())
         }
 
-
         btnRegister.setOnClickListener {
             val email = tilEmail.editText?.text.toString()
             val userName = tilUserName.editText?.text.toString()
@@ -67,14 +68,23 @@ class NewClient : AppCompatActivity() {
                 .DateBefore(Date())
                 .isValid()
 
-
-
             // Toast para revisar que el Spinner esta funcionando
             //Toast.makeText(this, plan, Toast.LENGTH_SHORT).show()
 
             if (emailValid && userNameValid && passwordValid && planStartValid){
-                AuthController(this).registerUser(userName, email, password, planType, planStart)
+                val user = UserClient(
+                    id = null,
+                    userName = userName,
+                    email = email,
+                    planType = planType,
+                    password = password,
+                    planStart = SimpleDateFormat("yyyy-MM-dd").parse(planStart)
+                )
+                AuthController(this).registerUser(user)
                 this.finish()
+            }
+            else {
+                Toast.makeText(this, "Campos inválidos", Toast.LENGTH_SHORT).show()
             }
         }
     }
