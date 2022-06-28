@@ -1,10 +1,13 @@
 package com.example.eva_1_app_movil
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
+import com.example.eva_1_app_movil.controllers.ClientsController
+import com.example.eva_1_app_movil.dao.clientDAO
+import com.example.eva_1_app_movil.lib.AppDatabase
 import com.example.eva_1_app_movil.models.Client2
 import com.example.eva_1_app_movil.utils.Converters
 import java.text.SimpleDateFormat
@@ -14,6 +17,7 @@ class ClientItemActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client_item)
 
+
         val client = intent.getSerializableExtra("client") as Client2
         val tvTitle = findViewById<TextView>(R.id.client_item_activity_tv_title)
         val btnUpdate = findViewById<Button>(R.id.client_item_activity_btn_update)
@@ -21,6 +25,7 @@ class ClientItemActivity : AppCompatActivity() {
         val tvPlanType = findViewById<TextView>(R.id.client_item_activity_tv_planType)
         val tvPlanStart = findViewById<TextView>(R.id.client_item_activity_tv_planStart)
         val tvEmail = findViewById<TextView>(R.id.client_item_activity_tv_email)
+        val controller = ClientsController(this,)
 
         //Titulo (ID - USERNAME)
         tvTitle.text = "ID ${client.id} - ${client.userName}"
@@ -36,11 +41,12 @@ class ClientItemActivity : AppCompatActivity() {
         tvEmail.text = client.email
 
         btnUpdate.setOnClickListener {
-            Toast.makeText(this, "Update disponible Proximamente", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, UpdateClient::class.java)
+            startActivity(intent)
         }
 
         btnDelete.setOnClickListener {
-            Toast.makeText(this, "Delete disponible Proximamente", Toast.LENGTH_SHORT).show()
+            controller.delete(client.id!!)
         }
     }
 }

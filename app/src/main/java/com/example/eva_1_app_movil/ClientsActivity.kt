@@ -14,7 +14,7 @@ class ClientsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_clients)
 
         val lvClient = findViewById<ListView>(R.id.clients_activity_lv_clients)
-        val allClients = ClientsController(this).getAll()
+        val allClients = ClientsController(this,).getAll()
         val adapter = ClientsAdapter(this, allClients)
         val btnNewClient = findViewById<Button>(R.id.clients_activity_btn_NewClient)
 

@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8pt"
-                android:text="Bienvenido"
+                android:text="Panel Administrador"
                 android:textAlignment="center"
                 android:textColor="@color/gray_primary"
                 android:textSize="48sp"

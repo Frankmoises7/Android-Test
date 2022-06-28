@@ -15,6 +15,8 @@
         <entry key="app/src/main/res/layout/activity_new_client.xml" value="0.24866310160427807" />
         <entry key="app/src/main/res/layout/activity_recovey_password.xml" value="0.3619791666666667" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.3619791666666667" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.24947916666666667" />
+        <entry key="app/src/main/res/layout/activity_update_client.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/layout/item_client.xml" value="0.375" />
         <entry key="app/src/main/res/layout/spinner_edit.xml" value="0.36096014492753625" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2025" />

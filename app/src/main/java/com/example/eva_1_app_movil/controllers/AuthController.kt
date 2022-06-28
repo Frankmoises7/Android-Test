@@ -3,11 +3,11 @@ package com.example.eva_1_app_movil.controllers
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
 import android.widget.Toast
 import androidx.room.Room
 import androidx.room.Room.databaseBuilder
-import com.example.eva_1_app_movil.ClientsActivity
-import com.example.eva_1_app_movil.DashboardActivity
+import com.example.eva_1_app_movil.*
 import com.example.eva_1_app_movil.dao.clientDAO
 import com.example.eva_1_app_movil.lib.AppDatabase
 import com.example.eva_1_app_movil.lib.BCrypt
@@ -20,6 +20,7 @@ import java.lang.Exception
 
 
 class AuthController constructor(ctx: Context){
+    private val sharedPref = ctx.getSharedPreferences("IronBoxFitness_app", Context.MODE_PRIVATE)
     private val INCORRECT_CREDENTIALS = "Credenciales incorrectas"
     private val ctx = ctx
     private val dao = databaseBuilder(
@@ -40,8 +41,10 @@ class AuthController constructor(ctx: Context){
         }
 
         if (BCrypt.checkpw(password, admin.password )) {
-            Toast.makeText(this.ctx, "Bienvenido ${admin.userName}", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this.ctx, DashboardActivity::class.java)
+            val sharedEdit = sharedPref.edit()
+            sharedEdit.putLong("admin_id", admin.id!!)
+            sharedEdit.apply()
+            val intent = Intent(this.ctx, Splash::class.java)
             this.ctx.startActivity(intent)
             (this.ctx as Activity).finish()
         } else {
@@ -70,35 +73,27 @@ class AuthController constructor(ctx: Context){
     }
 
 
-    fun registerClient(client: Client2){
-        val hashedPassword = BCrypt.hashpw(client.password, BCrypt.gensalt())
-        val clientEntity = ClientEntity(
-            id = null,
-            userName = client.userName,
-            email = client.email,
-            password = hashedPassword,
-            planStart = client.planStart,
-            planType = client.planType
-        )
+    fun checkAdminSession() {
+        val id = sharedPref.getLong("admin_id", -1)
 
-        val db = databaseBuilder(
-            ctx.applicationContext,
-            AppDatabase::class.java, "IronBoxFitness-app3"
-        )
-            .allowMainThreadQueries()
-            .build()
-
-        val dao = db.clientDao()
-
-        try {
-            dao.insert(clientEntity)
-            Toast.makeText(this.ctx, "Nuevo cliente '${client.userName}' Registrado", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this.ctx, ClientsActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-            this.ctx.startActivity(intent)
-        } catch (e: Exception) {
-            Toast.makeText(this.ctx, "Cuenta existente", Toast.LENGTH_SHORT).show()
-        }
+        Handler().postDelayed({
+            if (id == (-1).toLong()) {
+                val intent = Intent(this.ctx, MainActivity::class.java)
+                this.ctx.startActivity(intent)
+            } else {
+                val intent = Intent(this.ctx, DashboardActivity::class.java)
+                this.ctx.startActivity(intent)
+            }
+            (this.ctx as Activity).finish()
+        }, 2000)
     }
 
+    fun clearSession() {
+        val editor = sharedPref.edit()
+        editor.remove("admin_id")
+        editor.commit()
+        val intent = Intent(this.ctx, MainActivity::class.java)
+        this.ctx.startActivity(intent)
+        (this.ctx as Activity).finish()
+    }
 }

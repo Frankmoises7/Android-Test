@@ -9,6 +9,7 @@
         android:id="@+id/item_client_tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Placeholder Client Title" />
+        android:text="Placeholder Client Title"
+        android:textSize="18sp" />
 
 </LinearLayout>
