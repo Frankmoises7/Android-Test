@@ -28,7 +28,7 @@ class AuthController constructor(ctx: Context){
         AppDatabase::class.java, "IronBoxFitness-app3"
     )
         .allowMainThreadQueries()
-        .fallbackToDestructiveMigration()
+        .fallbackToDestructiveMigration() //solo para aplicaciones en desarrollo
         .build()
         .adminDao()
 

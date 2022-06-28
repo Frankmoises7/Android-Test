@@ -78,7 +78,7 @@ class UpdateClient : AppCompatActivity() {
                     planStart = SimpleDateFormat("yyyy-MM-dd").parse(planStart)
                 )
 
-                //ClientsController(this,).update(client)
+                ClientsController(this,).update(client)
             }
         }
     }

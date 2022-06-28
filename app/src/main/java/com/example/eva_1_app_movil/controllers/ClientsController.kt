@@ -27,7 +27,7 @@ class ClientsController(ctx: Context){
 
     fun getAll (): List<Client2> {
         val clientEntities = dao.findAll()
-
+        //Se realiza un mapeo
         val clients = ArrayList<Client2>()
 
         clientEntities.forEach { client -> clients.add(Client2(
@@ -117,7 +117,7 @@ class ClientsController(ctx: Context){
 
     //HAY QUE TERMINAR ESTA SHIIIIIIIT
 
-    /*fun update(client: Client2) {
+    fun update(client: Client2) {
         val hashedPassword = BCrypt.hashpw(client.password, BCrypt.gensalt())
         val clientEntity = ClientEntity(
             id = null,
@@ -131,7 +131,7 @@ class ClientsController(ctx: Context){
         Toast.makeText(this.ctx, "Cliente actualizado", Toast.LENGTH_SHORT).show()
         val intent = Intent(this.ctx, ClientsActivity::class.java)
         this.ctx.startActivity(intent)
-    }*/
+    }
 
     fun delete(id: Long) {
         dao.delete(id)
