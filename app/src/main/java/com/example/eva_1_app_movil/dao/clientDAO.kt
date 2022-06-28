@@ -14,12 +14,15 @@ interface clientDAO {
     @Query("SELECT * FROM clients WHERE email = :email")
     fun findByEmail(email: String): ClientEntity?
 
+    @Query("SELECT * FROM clients WHERE id = :id")
+    fun findById(id: Long): ClientEntity?
+
     @Insert
     fun insert(client: ClientEntity)
 
     @Update
     fun update(client: ClientEntity)
 
-    @Query("DELETE FROM clients where email = :email")
-    fun delete(email: String)
+    @Query("DELETE FROM clients where id = :id")
+    fun delete(id: Long)
 }

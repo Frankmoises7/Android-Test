@@ -13,17 +13,17 @@ import com.google.android.material.textfield.TextInputLayout
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NewClient : AppCompatActivity() {
+class UpdateClient : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_new_client)
+        setContentView(R.layout.activity_update_client)
 
-        val tilUserName = findViewById<TextInputLayout>(R.id.new_client_activity_til_userName)
-        val tilEmail = findViewById<TextInputLayout>(R.id.new_client_activity_til_email)
-        val tilPassword = findViewById<TextInputLayout>(R.id.new_client_activity_til_password)
-        val btnRegister = findViewById<Button>(R.id.new_client_activity_btn_register)
-        val spnPlanType = findViewById<Spinner>(R.id.new_client_activity_spn_planType)
-        val tilPlanStart = findViewById<TextInputLayout>(R.id.new_client_activity_til_planStart)
+        val tilUserName = findViewById<TextInputLayout>(R.id.update_client_activity_til_userName)
+        val tilEmail = findViewById<TextInputLayout>(R.id.update_client_activity_til_email)
+        val tilPassword = findViewById<TextInputLayout>(R.id.update_client_activity_til_password)
+        val btnUpdate = findViewById<Button>(R.id.update_client_activity_btn_update)
+        val spnPlanType = findViewById<Spinner>(R.id.update_client_activity_spn_planType)
+        val tilPlanStart = findViewById<TextInputLayout>(R.id.update_client_activity_til_planStart)
 
         //seteo de adapter para la creacion del Spinner - Esto permite usar los recursos que estan en Values
         val adapter = ArrayAdapter.createFromResource(
@@ -42,7 +42,7 @@ class NewClient : AppCompatActivity() {
         }
 
 
-        btnRegister.setOnClickListener {
+        btnUpdate.setOnClickListener {
             val email = tilEmail.editText?.text.toString()
             val userName = tilUserName.editText?.text.toString()
             val password = tilPassword.editText?.text.toString()
@@ -50,20 +50,16 @@ class NewClient : AppCompatActivity() {
             val planStart = tilPlanStart.editText?.text.toString()
 
             val emailValid = TilValidator(tilEmail)
-                .required()
                 .email()
                 .isValid()
 
             val userNameValid = TilValidator(tilUserName)
-                .required()
                 .isValid()
 
             val passwordValid = TilValidator(tilPassword)
-                .required()
                 .isValid()
 
             val planStartValid = TilValidator(tilPlanStart)
-                .required()
                 .DateBefore(Date())
                 .isValid()
 
@@ -82,7 +78,7 @@ class NewClient : AppCompatActivity() {
                     planStart = SimpleDateFormat("yyyy-MM-dd").parse(planStart)
                 )
 
-                ClientsController(this,).create(client)
+                //ClientsController(this,).update(client)
             }
         }
     }
