@@ -760,8 +760,4 @@ public class BCrypt {
             ret |= hashed_bytes[i] ^ try_bytes[i];
         return ret == 0;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master

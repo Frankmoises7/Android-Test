@@ -5,14 +5,8 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
-<<<<<<< HEAD
-import android.widget.Toast
-import com.example.eva_1_app_movil.controllers.AuthController
-import com.example.eva_1_app_movil.models.UserClient
-=======
 import com.example.eva_1_app_movil.controllers.ClientsController
 import com.example.eva_1_app_movil.models.Client2
->>>>>>> master
 import com.example.eva_1_app_movil.utils.TilValidator
 import com.example.eva_1_app_movil.utils.showDatePickerDialog
 import com.google.android.material.textfield.TextInputLayout
@@ -47,6 +41,7 @@ class NewClient : AppCompatActivity() {
             showDatePickerDialog(this, tilPlanStart, Date())
         }
 
+
         btnRegister.setOnClickListener {
             val email = tilEmail.editText?.text.toString()
             val userName = tilUserName.editText?.text.toString()
@@ -72,22 +67,12 @@ class NewClient : AppCompatActivity() {
                 .DateBefore(Date())
                 .isValid()
 
+
+
             // Toast para revisar que el Spinner esta funcionando
             //Toast.makeText(this, plan, Toast.LENGTH_SHORT).show()
 
             if (emailValid && userNameValid && passwordValid && planStartValid){
-<<<<<<< HEAD
-                val user = UserClient(
-                    id = null,
-                    userName = userName,
-                    email = email,
-                    planType = planType,
-                    password = password,
-                    planStart = SimpleDateFormat("yyyy-MM-dd").parse(planStart)
-                )
-                AuthController(this).registerUser(user)
-                this.finish()
-=======
                 val client = Client2(
                     id = null,
                     userName = userName,
@@ -98,10 +83,6 @@ class NewClient : AppCompatActivity() {
                 )
 
                 ClientsController(this,).create(client)
->>>>>>> master
-            }
-            else {
-                Toast.makeText(this, "Campos inválidos", Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -4,18 +4,6 @@ import androidx.room.TypeConverter
 import java.util.*
 
 class Converters {
-<<<<<<< HEAD
-    //saber como trabajar con ciertos datos, por ejemplo las fechas, ej.como convertir y como las devuelven
-    @TypeConverter
-    fun fromTimestamp(value: Long?): Date? {
-        return value?.let { Date(it) }
-    }
-
-    @TypeConverter
-    fun dateToTimestamp(date: Date?): Long? {
-        return date?.time?.toLong()
-    }
-=======
     @TypeConverter
     fun fromTimestamp(value: Long?): Date? {
         return value?.let {Date(it) }
@@ -26,5 +14,4 @@ class Converters {
         return date?.time?.toLong()
     }
 
->>>>>>> master
 }
