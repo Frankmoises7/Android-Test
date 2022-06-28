@@ -2,9 +2,11 @@ package com.example.eva_1_app_movil
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
+import android.widget.TextView
 import com.example.eva_1_app_movil.controllers.ClientsController
 import com.example.eva_1_app_movil.models.Client2
 import com.example.eva_1_app_movil.utils.TilValidator
@@ -18,13 +20,13 @@ class UpdateClient : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_client)
 
+        val tvId = findViewById<TextView>(R.id.update_client_activity_tv_id)
         val tilUserName = findViewById<TextInputLayout>(R.id.update_client_activity_til_userName)
         val tilEmail = findViewById<TextInputLayout>(R.id.update_client_activity_til_email)
         val tilPassword = findViewById<TextInputLayout>(R.id.update_client_activity_til_password)
         val btnUpdate = findViewById<Button>(R.id.update_client_activity_btn_update)
         val spnPlanType = findViewById<Spinner>(R.id.update_client_activity_spn_planType)
         val tilPlanStart = findViewById<TextInputLayout>(R.id.update_client_activity_til_planStart)
-
         //seteo de adapter para la creacion del Spinner - Esto permite usar los recursos que estan en Values
         val adapter = ArrayAdapter.createFromResource(
             this,
