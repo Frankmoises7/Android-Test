@@ -115,7 +115,6 @@ class ClientsController(ctx: Context){
         }
     }
 
-    //HAY QUE TERMINAR ESTA SHIIIIIIIT
 
     /*fun update(client: Client2) {
         val hashedPassword = BCrypt.hashpw(client.password, BCrypt.gensalt())
