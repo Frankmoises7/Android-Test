@@ -118,7 +118,10 @@ class ClientsController(ctx: Context){
     }
     
 
+<<<<<<< HEAD
     fun update(client: Client2) {
+=======
+>>>>>>> c30165e8061536a2621e54674b0a32f21eb0b125
 
         val hashedPassword = BCrypt.hashpw(client.password, BCrypt.gensalt())
         val clientEntity = ClientEntity(
