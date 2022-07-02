@@ -5,7 +5,6 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.room.Room
 import com.example.eva_1_app_movil.ClientsActivity
-import com.example.eva_1_app_movil.RecoveryPasswordActivity
 import com.example.eva_1_app_movil.lib.AppDatabase
 import com.example.eva_1_app_movil.lib.BCrypt
 import com.example.eva_1_app_movil.models.Client2
@@ -43,7 +42,9 @@ class ClientsController(ctx: Context){
         return clients
     }
 
-        /* fun getAll () {
+        /* ________________ INFO FALSEADA ___________________
+
+        fun getAll () {
         val clients = ArrayList<Client>()
         var clientsName = arrayOf<String>(
             "Alejandro", "Frank", "Boris", "Roberto", "Matias", "Franco", "Alondra", "Daniela", "Jose", "Pedro", "Maria"
@@ -55,7 +56,8 @@ class ClientsController(ctx: Context){
                 description = "Descripcion $i"
             ))
         }
-        return clients */
+        return clients
+        ________________ INFO FALSEADA ___________________  */
 
     fun findById(id: Long): Client2? {
         val entity = dao.findById(id) ?: return null
@@ -96,7 +98,7 @@ class ClientsController(ctx: Context){
         )
 
         val db = Room.databaseBuilder(
-            ctx.applicationContext,
+            ctx,
             AppDatabase::class.java, "IronBoxFitness-app3"
         )
             .allowMainThreadQueries()
@@ -114,13 +116,13 @@ class ClientsController(ctx: Context){
             Toast.makeText(this.ctx, "Cuenta existente", Toast.LENGTH_SHORT).show()
         }
     }
+    
 
-    //HAY QUE TERMINAR ESTA SHIIIIIIIT
+    fun update(client: Client2) {
 
-    /*fun update(client: Client2) {
         val hashedPassword = BCrypt.hashpw(client.password, BCrypt.gensalt())
         val clientEntity = ClientEntity(
-            id = null,
+            id = client.id,
             userName = client.userName,
             email = client.email,
             password = hashedPassword,
@@ -131,7 +133,7 @@ class ClientsController(ctx: Context){
         Toast.makeText(this.ctx, "Cliente actualizado", Toast.LENGTH_SHORT).show()
         val intent = Intent(this.ctx, ClientsActivity::class.java)
         this.ctx.startActivity(intent)
-    }*/
+    }
 
     fun delete(id: Long) {
         dao.delete(id)

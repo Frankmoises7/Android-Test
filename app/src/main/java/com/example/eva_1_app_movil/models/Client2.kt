@@ -11,3 +11,4 @@ data class Client2(
     val planType: String,
     val planStart: Date?
 ) : Serializable
+

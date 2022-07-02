@@ -18,6 +18,7 @@ class UpdateClient : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_client)
 
+        val clientId = intent.getSerializableExtra("client") as Client2?
         val tilUserName = findViewById<TextInputLayout>(R.id.update_client_activity_til_userName)
         val tilEmail = findViewById<TextInputLayout>(R.id.update_client_activity_til_email)
         val tilPassword = findViewById<TextInputLayout>(R.id.update_client_activity_til_password)
@@ -60,17 +61,14 @@ class UpdateClient : AppCompatActivity() {
                 .isValid()
 
             val planStartValid = TilValidator(tilPlanStart)
-                .DateBefore(Date())
                 .isValid()
-
-
 
             // Toast para revisar que el Spinner esta funcionando
             //Toast.makeText(this, plan, Toast.LENGTH_SHORT).show()
 
             if (emailValid && userNameValid && passwordValid && planStartValid){
                 val client = Client2(
-                    id = null,
+                    id = clientId?.id,
                     userName = userName,
                     email = email,
                     password = password,
@@ -78,7 +76,7 @@ class UpdateClient : AppCompatActivity() {
                     planStart = SimpleDateFormat("yyyy-MM-dd").parse(planStart)
                 )
 
-                //ClientsController(this,).update(client)
+                ClientsController(this,).update(client)
             }
         }
     }

@@ -25,7 +25,7 @@ class ClientItemActivity : AppCompatActivity() {
         val tvPlanType = findViewById<TextView>(R.id.client_item_activity_tv_planType)
         val tvPlanStart = findViewById<TextView>(R.id.client_item_activity_tv_planStart)
         val tvEmail = findViewById<TextView>(R.id.client_item_activity_tv_email)
-        val controller = ClientsController(this,)
+        val controller = ClientsController(this)
 
         //Titulo (ID - USERNAME)
         tvTitle.text = "ID ${client.id} - ${client.userName}"
@@ -42,6 +42,7 @@ class ClientItemActivity : AppCompatActivity() {
 
         btnUpdate.setOnClickListener {
             val intent = Intent(this, UpdateClient::class.java)
+            intent.putExtra("client", client)
             startActivity(intent)
         }
 
