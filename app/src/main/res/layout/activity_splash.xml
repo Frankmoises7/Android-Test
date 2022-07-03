@@ -32,7 +32,6 @@
             android:textSize="48sp"
             android:textStyle="bold" />
 
-
         <ImageView
             android:id="@+id/dashboard_activity_img_logo"
             android:layout_width="216dp"

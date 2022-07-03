@@ -42,7 +42,7 @@ class ClientsController(ctx: Context){
         return clients
     }
 
-        /* ________________ INFO FALSEADA ___________________
+    /* ________________ INFO FALSEADA ___________________
 
         fun getAll () {
         val clients = ArrayList<Client>()
@@ -59,6 +59,10 @@ class ClientsController(ctx: Context){
         return clients
         ________________ INFO FALSEADA ___________________  */
 
+
+    /* ________________ FUNCIONES EN CASO DE NECESITARLAS ___________________
+
+
     fun findById(id: Long): Client2? {
         val entity = dao.findById(id) ?: return null
 
@@ -69,7 +73,7 @@ class ClientsController(ctx: Context){
             password = entity.password,
             planStart = entity.planStart,
             planType = entity.planType
-        )
+            )
     }
 
     fun findByEmail(email: String): Client2? {
@@ -85,6 +89,7 @@ class ClientsController(ctx: Context){
         )
     }
 
+ ________________ FUNCIONES EN CASO DE NECESITARLAS ___________________ */
 
     fun create(client: Client2){
         val hashedPassword = BCrypt.hashpw(client.password, BCrypt.gensalt())
@@ -116,12 +121,8 @@ class ClientsController(ctx: Context){
             Toast.makeText(this.ctx, "Cuenta existente", Toast.LENGTH_SHORT).show()
         }
     }
-    
 
-<<<<<<< HEAD
     fun update(client: Client2) {
-=======
->>>>>>> c30165e8061536a2621e54674b0a32f21eb0b125
 
         val hashedPassword = BCrypt.hashpw(client.password, BCrypt.gensalt())
         val clientEntity = ClientEntity(
@@ -144,5 +145,4 @@ class ClientsController(ctx: Context){
         val intent = Intent(this.ctx, ClientsActivity::class.java)
         this.ctx.startActivity(intent)
     }
-
 }

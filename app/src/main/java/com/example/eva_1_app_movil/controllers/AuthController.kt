@@ -5,16 +5,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Handler
 import android.widget.Toast
-import androidx.room.Room
 import androidx.room.Room.databaseBuilder
 import com.example.eva_1_app_movil.*
-import com.example.eva_1_app_movil.dao.clientDAO
 import com.example.eva_1_app_movil.lib.AppDatabase
 import com.example.eva_1_app_movil.lib.BCrypt
 import com.example.eva_1_app_movil.models.Admin
 import com.example.eva_1_app_movil.models.AdminEntity
-import com.example.eva_1_app_movil.models.Client2
-import com.example.eva_1_app_movil.models.ClientEntity
 import java.lang.Exception
 
 
@@ -34,7 +30,6 @@ class AuthController constructor(ctx: Context){
 
     fun login(email: String, password: String){
         val admin = dao.findByEmail(email)
-
         if (admin == null) {
             Toast.makeText(this.ctx, INCORRECT_CREDENTIALS, Toast.LENGTH_SHORT).show()
             return
